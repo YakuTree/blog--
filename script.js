@@ -167,7 +167,7 @@ const options = { month: 'long', day: 'numeric' };
 const formattedDate = estDate.toLocaleDateString('en-US', options);
                 articleElement.innerHTML = `
                 <a href="${article.pdfURL}" target="_blank" rel="noopener noreferrer" class="article-link">
-                        <img src="${article.imageURL || 'default.jpg'}" alt="Article Image" class="article-image">
+                  <img src="${article.imageURL || 'default.jpg'}" alt="Article Image" class="article-image">
                         <div class="article-info">
                             <h2 class="article-title">${article.title}</h2>
                             <p class="article-description">${article.description}</p>

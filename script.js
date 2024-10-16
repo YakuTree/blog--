@@ -147,21 +147,31 @@ document.addEventListener('DOMContentLoaded', function () {
     
             if (!articles || articles.length === 0) {
                 console.log("No articles found for this category.");
-                return;
+                returns;
             }
-    
+            
             articlesContainer.innerHTML = ''; // Clear the container first
             articles.forEach((article) => {
                 const articleElement = document.createElement('article');
+                
                 articleElement.classList.add('article');
-    
+                const dateInput = article.date; // Get the input value (YYYY-MM-DD)
+                const date = new Date(dateInput); 
+                const utcDate = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+                // EST/EDT is usually UTC-5 or UTC-4 (for daylight saving time)
+const estOffset = 45; // For EDT (Eastern Daylight Time)
+
+const estDate = new Date(utcDate.getTime() + estOffset * 60 * 60 * 1000);
+
+const options = { month: 'long', day: 'numeric' };
+const formattedDate = estDate.toLocaleDateString('en-US', options);
                 articleElement.innerHTML = `
                 <a href="${article.pdfURL}" target="_blank" rel="noopener noreferrer" class="article-link">
                         <img src="${article.imageURL || 'default.jpg'}" alt="Article Image" class="article-image">
                         <div class="article-info">
                             <h2 class="article-title">${article.title}</h2>
                             <p class="article-description">${article.description}</p>
-                            <p>${article.author} @ ${new Date(article.date).toDateString()}</p>
+                            <p>${article.author} @ ${formattedDate}</p>
                         </div>
                     </a>
                     <button class="delete-button" onclick="deleteArticle(${article.id}, '${pageCategory}')">Delete Article</button>

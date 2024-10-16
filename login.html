@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+</head>
+<body>
+  <div class="login-container">
+    <h2>Login</h2>
+    <form id="loginForm">
+      <label for="email">Email:</label><br>
+      <input type="email" id="email" name="email" required><br><br>
+
+      <label for="password">Password:</label><br>
+      <input type="password" id="password" name="password" required><br><br>
+
+      <button type="submit">Login</button>
+    </form>
+    <p id="loginError" style="color:red; display:none;"></p>
+  </div>
+
+  <script>
+    // Initialize Supabase FIRST before any other logic
+    const supabaseUrl = 'https://ntewqnddtslaglnzdnel.supabase.co'; // Replace with your project URL
+    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im50ZXdxbmRkdHNsYWdsbnpkbmVsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjgwODcxNTQsImV4cCI6MjA0MzY2MzE1NH0.vaFIl2CT7ayM5Rtd-h8u8B5cS9S4TcUu7CzKvVcnPGg'; // Replace with your anon key
+    const supabase = window.supabase.createClient(supabaseUrl, supabaseKey); // Supabase initialized here
+
+    // Handle form submission
+    const loginForm = document.getElementById('loginForm');
+    loginForm.addEventListener('submit', async function (e) {
+      e.preventDefault(); // Prevent form from refreshing the page
+
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+      try {
+        // Attempt to sign in the user
+        const { data, error } = await supabase.auth.signInWithPassword({
+          email,
+          password,
+        });
+
+        if (error) {
+          // Display error message if login fails
+          document.getElementById('loginError').style.display = 'block';
+          document.getElementById('loginError').textContent = "Login failed: " + error.message;
+          window.location.href = 'index.html';
+        } else {
+          // Redirect to protected page if login succeeds
+          window.location.href = 'write.html'; // Adjust the URL to your desired protected page
+        }
+      } catch (error) {
+        console.error('Login error:', error);
+        document.getElementById('loginError').textContent = 'An unexpected error occurred.';
+        window.location.href = 'index.html';
+      }
+    });
+  </script>
+</body>
+</html>

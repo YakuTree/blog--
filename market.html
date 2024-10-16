@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mediaqueries.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <script src="script.js"defer></script>
+
+</head>
+<body>
+    <nav id = "desktop-nav">
+
+        <div class="logo"><a href="index.html">Kaiqi Li</a></div>
+        <div>
+            <ul class="nav-links">
+                <li> <a href ="holding.html">Holdings</a></li>
+                <li><a href = "market.html">Market</a></li>
+                <li><a href = "thought.html">Thoughts</a></li>
+                <li> <a href ="bitcoin.html">Bitcoin</a></li>
+                <li><a href = "etherium.html">Etherium</a></li>
+                <li><a href = "cardano.html">Cardano</a></li>
+                <li><a href = "lesson.html">Lessons</a></li>
+                <li><a href = "rule.html">Rules</a></li>
+                <li><a href = "write.html">Write</a></li>
+            </ul>
+        </div>
+    </nav>
+    <nav id="hambur-nav">
+        <div class="logo"><a href="index.html">Kaiqi Li</a></div>
+        <div class="hambur-menu">
+            <div class="hambur-icon" onclick="togglem()"> 
+            <span></span>
+            <span></span>
+            <span></span>
+            </div>
+            <div class="menu-links">
+                <li><a href ="holding.html" onclick="togglem()">Holding</a></li>
+                <li><a href = "market.html" onclick="togglem()">Market</a></li>
+                <li><a href = "thought.html" onclick="togglem()">Thought</a></li>
+                <li><a href = "bitcoin.html" onclick="togglem()">Bitcoin</a></li>
+                <li><a href = "etherium.html" onclick="togglem()">Etherium</a></li>
+                <li><a href = "cardano.html" onclick="togglem()">Cardano</a></li>
+                <li><a href = "lesson.html" onclick="togglem()">Lessons</a></li>
+                <li><a href = "rule.html" onclick="togglem()">Rules</a></li>
+                <li><a href = "write.html" onclick="togglem()">Write</a></li>
+            </div>
+        </div>
+    </nav>
+
+
+    <main>
+        <div class="content">
+            <div id="articles" class="articles">
+                <!-- Articles will be dynamically loaded here -->
+            </div>
+        </div>
+    </main>
+    
+</body>
+</html>

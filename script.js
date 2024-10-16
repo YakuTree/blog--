@@ -159,12 +159,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 const date = new Date(dateInput); 
                 const utcDate = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
                 // EST/EDT is usually UTC-5 or UTC-4 (for daylight saving time)
-const estOffset = 45; // For EDT (Eastern Daylight Time)
+                const estOffset = 45; // For EDT (Eastern Daylight Time)
 
-const estDate = new Date(utcDate.getTime() + estOffset * 60 * 60 * 1000);
+                const estDate = new Date(utcDate.getTime() + estOffset * 60 * 60 * 1000);
 
-const options = { month: 'long', day: 'numeric' };
-const formattedDate = estDate.toLocaleDateString('en-US', options);
+                const options = { month: 'long', day: 'numeric' };
+                const formattedDate = estDate.toLocaleDateString('en-US', options);
                 articleElement.innerHTML = `
                 <a href="${article.pdfURL}" target="_blank" rel="noopener noreferrer" class="article-link">
                   <img src="${article.imageURL || 'default.jpg'}" alt="Article Image" class="article-image">
